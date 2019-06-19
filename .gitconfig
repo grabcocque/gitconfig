@@ -1,0 +1,16 @@
+[user]
+	email = martincoxall@bmlltech.com
+	name = Martin Coxall
+[alias]
+  ec = config --global -e
+  cm = !git add . && git commit -am
+  fix = !git add . && git commit --fixup HEAD
+  cf = !git add . && git commit --fixup HEAD && git rom
+  rom = !git fetch --all && git rebase -i --autosquash origin/master && git push --force-with-lease
+  up = pull --prune
+  co = checkout
+  cob = checkout -b
+  com = !git stash && git checkout master && git up  
+  st = status
+  gbr = !git branch | grep -v "master" | xargs git branch -D
+  fap = fetch --all --prune
