@@ -15,3 +15,11 @@
   st = status
   gbr = !git branch | grep -v "master" | xargs git branch -D
   fap = fetch --all --prune
+[core]
+	editor = code --wait
+[diff]
+  guitool = vscode
+[difftool]
+  prompt = false
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
