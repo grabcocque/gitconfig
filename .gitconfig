@@ -7,6 +7,7 @@
   fix = !git add . && git commit --fixup HEAD
   cf = !git add . && git commit --fixup HEAD && git rom
   rom = !git fetch --all && git rebase -i --autosquash origin/master && git push --force-with-lease
+  mfm = !git fetch --all && git merge origin/master && git push
   up = pull --prune
   co = checkout
   cob = checkout -b
@@ -14,3 +15,11 @@
   st = status
   gbr = !git branch | grep -v "master" | xargs git branch -D
   fap = fetch --all --prune
+[core]
+	editor = code --wait
+[diff]
+  tool = vscode
+[difftool]
+  prompt = false
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
