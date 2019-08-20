@@ -11,13 +11,16 @@
   up = pull --prune
   co = checkout
   cob = checkout -b
-  com = !git stash && git checkout master && git up  
   st = status
   gbr = !git branch | grep -v "master" | xargs git branch -D
+  com = !git stash && git checkout master && git pull && git reset --hard origin/HEAD 
   fap = fetch --all --prune
+  v = !git describe --abbrev=0 --tags
 [diff]
   tool = meld
 [difftool]
   prompt = false
 [difftool "meld"]
   cmd = meld "$LOCAL" "$REMOTE"
+[rebase]
+	autosquash = true
