@@ -13,7 +13,7 @@
   cob = checkout -b
   st = status
   gbr = !git branch | grep -v "master" | xargs git branch -D
-  com = !git stash && git checkout master && git pull && git reset --hard origin/HEAD 
+  com = !git stash && git checkout master && git pull --rebase 
   fap = fetch --all --prune
   v = !git describe --abbrev=0 --tags
 [diff]
@@ -24,3 +24,5 @@
   cmd = meld "$LOCAL" "$REMOTE"
 [rebase]
 	autosquash = true
+[pull]
+	rebase = true
