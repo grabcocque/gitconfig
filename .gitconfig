@@ -1,28 +1,111 @@
 [user]
-	email = martincoxall@bmlltech.com
-	name = Martin Coxall
+email = pseudo.meta@gmail.com
+name = Martin Coxall
+
+[core]
+editor = nvim
+autocrlf = input
+
+[color]
+ui = auto
+
+[push]
+default = simple
+
+[fetch]
+prune = true
+
+[init]
+defaultBranch = main
+
 [alias]
-  ec = config --global -e
-  cm = !git add . && git commit -am
-  fix = !git add . && git commit --fixup HEAD
-  cf = !git add . && git commit --fixup HEAD && git rom
-  rom = !git fetch --all && git rebase -i --autosquash origin/master && git push --force-with-lease
-  mfm = !git fetch --all && git merge origin/master && git push
-  up = pull --prune
-  co = checkout
-  cob = checkout -b
-  st = status
-  gbr = !git branch | grep -v "master" | xargs git branch -D
-  com = !git stash && git checkout master && git pull --rebase 
-  fap = fetch --all --prune
-  v = !git describe --abbrev=0 --tags
+ec = config --global -e
+cm = !git add . && git commit -am
+fix = !git add . && git commit --fixup HEAD
+cf = !git add . && git commit --fixup HEAD && git rom
+rom = !git fetch --all && git rebase -i --autosquash origin/master && git push --force-with-lease
+mfm = !git fetch --all && git merge origin/master && git push
+up = pull --prune
+co = checkout
+cob = checkout -b
+st = status
+gbr = !git branch | grep -v "master" | xargs git branch -D
+com = !git stash && git checkout master && git pull --rebase
+fap = fetch --all --prune
+v = !git describe --abbrev=0 --tags
+lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
+br = branch
+bra = branch -a
+sl = stash list
+sa = stash apply
+sp = stash pop
+ss = stash save
+
+# Log
+last = log -1 HEAD
+# Working Directory
+undo = !git restore --staged . && git restore .
+unstage = restore --staged
+amend = commit --amend --no-edit
+# Remote
+pu = !git push --set-upstream origin $(git symbolic-ref --short HEAD)
+# Tags
+tags = tag --sort -v:refname
+# Misc
+root = rev-parse --show-toplevel
+
+serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths ./.git/
+who = shortlog -s -n --email
+
+# Maintenance & Integrity
+maint = gc --aggressive --prune=now
+check = fsck --full
+# Advanced Log/Diff
+wdiff = diff --word-diff
+lgs = log --stat
+grep-log = log --grep
+pickaxe = log -S
+# Branch/Remote Management
+
+prune-remote = remote prune
+compare = log --oneline --graph --boundary
+# Bisect Helpers
+bs = bisect start
+bg = bisect good
+bb = bisect bad
+br = bisect reset
+# Worktree Helpers
+wtl = worktree list
+wta = worktree add
+wtr = worktree remove
+
 [diff]
-  tool = meld
-[difftool]
-  prompt = false
-[difftool "meld"]
-  cmd = meld "$LOCAL" "$REMOTE"
+tool = vimdiff
+
 [rebase]
-	autosquash = true
+autosquash = true
+updateRefs = true
+
 [pull]
-	rebase = true
+rebase = true
+
+[commit]
+verbose = true
+
+[merge]
+tool = vimdiff
+conflictstyle = diff3
+
+[rerere]
+enabled = true
+autoupdate = true
+
+[help]
+autocorrect = 1
+
+[log]
+date = iso
+
+[transfer]
+fsckobjects = true
