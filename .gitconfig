@@ -23,14 +23,14 @@ ec = config --global -e
 cm = !git add . && git commit -am
 fix = !git add . && git commit --fixup HEAD
 cf = !git add . && git commit --fixup HEAD && git rom
-rom = !git fetch --all && git rebase -i --autosquash origin/master && git push --force-with-lease
-mfm = !git fetch --all && git merge origin/master && git push
+rom = !git fetch --all && git rebase -i --autosquash origin/main && git push --force-with-lease
+mfm = !git fetch --all && git merge origin/main && git push
 up = pull --prune
 co = checkout
 cob = checkout -b
 st = status
-gbr = !git branch | grep -v "master" | xargs git branch -D
-com = !git stash && git checkout master && git pull --rebase
+gbr = !git branch | grep -v "main" | xargs git branch -D
+com = !git stash && git checkout main && git pull --rebase
 fap = fetch --all --prune
 v = !git describe --abbrev=0 --tags
 lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
